@@ -10,22 +10,22 @@
           <div style="margin-bottom: 15px; width: 15%;">
 
             <label for="serverName" >Server Name:</label>
-            <input type="text" id="serverName" name="serverName"><br>
+            <input type="text" id="serverName" name="serverName" required><br>
             <label for="adminPassword" >adminPassword:</label>
-            <input type="text" id="adminPassword" name="adminPassword" ><br>
+            <input type="text" id="adminPassword" name="adminPassword" required><br>
             <label for="spectatorPassword">Spectator Password:</label>
             <input type="text" id="spectatorPassword" name="spectatorPassword"><br>
 
             <label >TR Requirement:</label>
-            <input type="number" id="TR" name="TR" min="1" max="100">
+            <input type="number" id="TR" name="TR" min="1" max="3">
             <label >SA Requirement:</label>
-            <input type="number" id="SA" name="SA" min="1" max="100">
+            <input type="number" id="SA" name="SA" min="1" max="99" required>
             <label>RC Requirement:</label>
-            <input type="number" id="RC" name="RC" min="1" max="100">
+            <input type="number" id="RC" name="RC" min="1" max="99">
             <label>Max Connections:</label>
-            <input type="number" id="mConnection" name="mConnection" min="1" max="100">
+            <input type="number" id="mConnection" name="mConnection" min="1" max="30">
             <label>Max Car Slots:</label>
-            <input type="number" id="mCarSlot" name="mCarSlot" min="1" max="100">
+            <input type="number" id="mCarSlot" name="mCarSlot" min="1" max="99">
             <div style="padding-top: 4%;">
               <select name="formationLap" id="formationLap" style="width: 83%;" >
                   <option value="0">&#40;1&#41;free 	&#40;replaces/manual start&#41;</option>
@@ -60,10 +60,10 @@
 
           <div style="width: 15%;">    
 
-            Pre Race Wait Time    <input type="number" id="preRace" method="POST" name="preRace"  min="30" max="500">
-            Post Race Wait Time   <input type="number" id="postRace" method="POST" name="postRace"  min="1" max="5">
-            Over Time             <input type="number" id="overTime" min="1" method="POST" name="overTime"  max="330">
-            Post Qualy Wait Time  <input type="number" id="postQualy" method="POST" name="postQualy" min="1" max="330">
+            Pre Race Wait Time    <input type="number" id="preRace" method="POST" name="preRace"  min="30" max="500" required>
+            Post Race Wait Time   <input type="number" id="postRace" method="POST" name="postRace"  min="1" max="5" required>
+            Over Time             <input type="number" id="overTime" min="1" method="POST" name="overTime"  max="330"required>
+            Post Qualy Wait Time  <input type="number" id="postQualy" method="POST" name="postQualy" min="1" max="330" required>
 
 
             <select name="track" id="track" name="track"  method="POST" >
