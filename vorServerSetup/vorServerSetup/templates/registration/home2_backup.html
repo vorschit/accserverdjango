@@ -1,0 +1,103 @@
+{% extends "../base.html" %}
+{% load static %}
+{% block content %}
+
+<body>
+    <!-- Server Setting -->
+    <h1 style="color: white;">Server Setting</h1>
+    <div style="margin-bottom: 15px; color: white; width: auto; background-color: #023e8a;">
+        <form method="post">
+            {% csrf_token %}
+            <label for="serverName" style="display: block; font-size: 18px; font-weight: bold;">Server Name:</label>
+            <input type="text" id="serverName" name="serverName" style="width: 90%; padding: 15px; font-size: 18px;" required>
+
+            <label for="adminPassword" style="display: block; font-size: 18px; font-weight: bold;">Admin Password:</label>
+            <input type="text" id="adminPassword" name="adminPassword" style="width: 90%; padding: 15px; font-size: 18px;">
+
+            <label for="spectatorPassword" style="display: block; font-size: 18px; font-weight: bold;">Spectator Password:</label>
+            <input type="text" id="spectatorPassword" name="spectatorPassword" style="width: 90%; padding: 15px; font-size: 18px;">
+
+            <label style="display: block; font-size: 18px; font-weight: bold;">TR Requirement:</label>
+            <input type="number" id="TR" name="TR" min="1" max="100">
+            <label style="display: block; font-size: 18px; font-weight: bold;">SA Requirement:</label>
+            <input type="number" id="SA" name="SA" min="1" max="100">
+            <label style="display: block; font-size: 18px; font-weight: bold;">RC Requirement:</label>
+            <input type="number" id="RC" name="RC" min="1" max="100">
+            <label style="display: block; font-size: 18px; font-weight: bold;">Max Connections:</label>
+            <input type="number" id="mConnection" name="mConnection" min="1" max="100">
+            <label style="display: block; font-size: 18px; font-weight: bold;">Max Car Slots:</label>
+            <input type="number" id="mCarSlot" name="mCarSlot" min="1" max="100">
+
+            <!-- Formation Lap Setting -->
+            <label for="formation" style="display: block; font-size: 18px; font-weight: bold;">Formation Lap Type:</label>
+            <select name="formationLap" id="formation">
+                <option value="0">&#40;1&#41;free 	&#40;replaces/manual start&#41;</option>
+                <option value="1">&#40;2&#41;Old Limiter Lap</option>
+                <option value="3">&#40;3&#41;Default Formation Lap</option>
+                <option value="4">&#40;4&#41;One Free Formation Lap &#40;ghosted&#41;</option>
+                <option value="5">&#40;5&#41;Short Formation with UI + ghosted lap</option>
+            </select>
+
+            <input type="checkbox" method="POST" id="prephase" name="prephase" value="1">
+            <label for="prephase"> Prep Phase Locked</label><br>
+            <input type="checkbox" method="POST" id="racelocked" name="racelocked" value="1">
+            <label for="racelocked"> Race Locked</label><br>
+            <input type="checkbox" method="POST" id="shortformationlap" name="shortformationlap" value="1">
+            <label for="shortformationlap"> Short Formation Lap</label><br><br>
+            <input type="checkbox" method="POST"  id="autodq" name="autodq" value="1">
+            <label for="autodq"> Auto DQ</label><br><br>
+            <input type="checkbox" method="POST"  id="randomizetrack" name="randomizetrack" value="1">
+            <label for="randomizetrack"> Randomize Track</label><br><br>
+            <input type="checkbox" method="POST" id="registerlobby" name="registerlobby" value="1">
+            <label for="registerlobby"> registerlobby</label><br><br>
+            <input type="checkbox" method="POST"   id="landiscovery" name="landiscovery" value="1">
+            <label for="landiscovery"> Lan Discovery</label><br><br>
+            <input type="checkbox" method="POST"   id="dumpleaderboard" name="dumpleaderboard" value="1">
+            <label for="dumpleaderboard"> Dump Leaderboard</label><br><br>
+            <input type="checkbox" method="POST"  id="dumpentrylist" name="dumpentrylist" value="1">
+            <label for="dumpentrylist"> Dump Entry List</label><br><br>
+
+            <form style="padding-top: 20px;">
+                Pre Race Wait Time    <input type="number" id="preRace" method="POST" name="preRace"  min="30" max="500">
+                Post Race Wait Time   <input type="number" id="postRace" method="POST" name="postRace"  min="1" max="5">
+                Over Time             <input type="number" id="overTime" min="1" method="POST" name="overTime"  max="330">
+                Post Qualy Wait Time  <input type="number" id="postQualy" method="POST" name="postQualy" min="1" max="330">
+            </form>
+
+            <select name="track" id="track" name="track"  method="POST" >
+                <option value="barcelona">Barcelona</option>
+                <option value="brands_hatch">Brands Hatch</option>
+                <option value="cota">COTA</option>
+                <option value="hungaroring">hungaroring</option>
+                <option value="imola">imola</option>
+                <option value="indianapolis">indianapolis</option>
+                <option value="kyalami">kyalami</option>
+                <option value="laguna_seca">laguna seca</option>
+                <option value="misano">misano</option>
+                <option value="monza">monza</option>
+                <option value="mount_panorama">Mount Panorama</option>
+                <option value="nurburgring">nurburgring</option>
+                <option value="oulton_park">oulton park</option>
+                <option value="paul_ricard">paul ricard</option>
+                <option value="silverstone">silverstone</option>
+                <option value="snetterton">snetterton</option>
+                <option value="spa">spa</option>
+                <option value="suzuka">suzuka</option>
+                <option value="watkins_glen">watkins glen</option>
+                <option value="valencia">valencia</option>
+                <option value="zandvoort">zandvoort</option>
+                <option value="zolder">zolder</option>
+              </select>
+        
+        <form method="POST" action="{% url 'app:generated_json' %}">
+            {% csrf_token %}
+            <!-- Your form fields here -->
+            <button type="submit">Generate JSON</button>
+        </form>
+    <div>
+
+    </div>
+
+
+</body>
+{% endblock content %}

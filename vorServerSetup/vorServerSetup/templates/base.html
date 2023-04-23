@@ -1,0 +1,99 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Voracing Server Setup</title>
+    <header style="display: flex; align-items: center; z-index: 1; height: auto; border-radius: 20px;" >
+		<img src="{% static 'img/voracing.png' %}" style="height: 130px; width: auto;">
+		<h1 style="margin-left: 10px;">Voracing Server Setup</h1>
+	</header>
+	  
+
+</head>
+
+<body style="background-color: #001d3d;">
+	{% if user.is_authenticated %}
+			<li style="float:right"><a class="active" href="{% url 'app:logout' %}">Logout</a></li>
+			<li style="float:right"><a href="#about"><span>{{ user }}</span></a></li>
+		{% else %}
+			<li style="float:right"><a href="{% url 'login' %}">Login</a></li>
+		{% endif %}
+
+	<div class="content">
+		{% block content %}
+		{% endblock %}
+	</div>
+
+</body>
+</html>
+<style>
+	/* Header */
+	header {
+		background-color: #0D1321;
+		color: white;
+		text-align: center;
+		font-size: 25px;
+		font-weight: bold;
+		height: auto;
+	}
+	
+	/* Footer */
+	footer {
+		background-color: #0D1321;
+		color: white;
+		padding: 10px;
+		text-align: center;
+		position: fixed;
+		bottom: 0;
+		left: 0;
+		right: 0;
+	}
+
+	ul {
+	  list-style-type: none;
+	  margin: 0;
+	  padding: 0;
+	  overflow: hidden;
+	  background-color: #333;
+	}
+
+	li 
+	{
+	  float: left;
+	}
+
+	li a 
+	{
+	  display: block;
+	  color: white;
+	  text-align: center;
+	  padding: 14px 16px;
+	  text-decoration: none;
+	}
+
+	li a:hover:not(.active) 
+	{
+	  background-color: #111;
+	}
+
+	.active 
+	{
+	  background-color: #04AA6D;
+	}
+	
+	
+	/* Footer */
+	footer 
+	{
+		background-color: #0D1321;
+		color: white;
+		padding: 10px;
+		text-align: center;
+		position: fixed;
+		bottom: 0;
+		left: 0;
+		right: 0;
+	}
+
+
+</style>	

@@ -1,0 +1,53 @@
+{% extends "../base.html" %}
+{% load static %}
+{% block content %}
+<link href='https://fonts.googleapis.com/css?family=Akshar' rel='stylesheet'>
+<style>
+  body {
+      font-family: 'Akshar';
+  }
+  .loginboximg {
+    display:block;
+    margin: auto;
+  }
+  .btnLogin {
+    display:flex;
+    justify-content: center;
+    border-radius: 8px;
+  }
+  form{
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    height: calc(100% - 120px); 
+    margin-top: 120px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    border: 1px solid #ddd;
+    box-sizing: border-box;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  </style>
+  <body>
+    <div class='loginbox'style="">
+      <form class="loginbox" method="post" style="color: white; border: 1px solid #ddd; padding: 20px; display: flex; justify-content: center; flex-direction: column; border-radius: 8px;">
+        <div class="loginboximg">
+          <img class=loginboximg src="{% static 'img/voracing.png' %}" style="height: 240px; width: auto;">
+        </div> 
+        {% csrf_token %}
+        <div style="margin-bottom: 15px;">
+          <label for="username" style="display: block; font-size: 18px; font-weight: bold; ">Username:</label>
+          <input type="text" id="username" name="username" style="width: 90%; padding: 15px; font-size: 18px;">
+        </div>
+        <div style="margin-bottom: 15px;">
+          <label for="password" style="display: block; font-size: 18px; font-weight: bold;">Password:</label>
+          <input type="password" id="password" name="password" style="width: 90%; padding: 15px; font-size: 18px;">
+        </div>
+        <input class="btnLogin" type="submit" value="Login" style="background-color: #219ebc; color: white; padding: 15px 20px; border: none; font-size: 18px;">
+      </form>
+    </div>    
+  </body>
+{% endblock content %}
+
