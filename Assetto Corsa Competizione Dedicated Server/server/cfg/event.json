@@ -1,0 +1,31 @@
+{
+"ambientTemp": 10,
+"cloudLevel": 0.5,
+"configVersion": 1,
+"isFixedConditionQualification": 1,
+"postQualySeconds": 24,
+"postRaceSeconds": 4,
+"preRaceWaitingTimeSeconds": 45,
+"rain": 0.0,
+"sessionOverTimeSeconds": 24,
+"sessions": [
+{
+"dayOfWeekend": 1,
+"hourOfDay": 12,
+"sessionDurationMinutes": 12,
+"sessionType": "Q",
+"timeMultiplier": 12
+},
+{
+"dayOfWeekend": 1,
+"hourOfDay": 12,
+"sessionDurationMinutes": 12,
+"sessionType": "R",
+"timeMultiplier": 12
+}
+],
+"simracerWeatherConditions": 1,
+"track": "valencia",
+"trackTemp": 1,
+"weatherRandomness": 0
+}

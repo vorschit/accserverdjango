@@ -4,12 +4,27 @@ from django.contrib.auth.decorators import login_required
 import json
 from django.http import HttpResponse, JsonResponse
 from .forms import ServerSettingsForm
+import os
+import subprocess
 # Create your views here.
 
 @login_required
 def home(request):
+    
+    session = request.POST.get('session')
+    day = request.POST.get('day')
+    time_scale = request.POST.get('time_scale')
+    start_time = request.POST.get('start_time')
+    duration = request.POST.get('duration')
 
+    sessionR = request.POST.get('sessionR')
+    dayR = request.POST.get('dayR')
+    time_scaleR = request.POST.get('time_scaleR')
+    start_timeR = request.POST.get('start_timeR')
+    durationR = request.POST.get('durationR')
     #server setting
+
+    
     serverName = request.POST.get('serverName')
     adminPassword = request.POST.get('adminPassword')
     spectatorPassword = request.POST.get('spectatorPassword')
@@ -17,7 +32,7 @@ def home(request):
     SA = request.POST.get('SA')
     RC = request.POST.get('RC')
     mConnection = request.POST.get('mConnection')
-    formationLap = request.POST.get('formationLap')
+    formationLapType = request.POST.get('formationLapType')
     mCarSlot = request.POST.get('mCarSlot')
     formationLap = request.POST.get('formationLap')
     prephase = request.POST.get('prephase')
@@ -45,16 +60,36 @@ def home(request):
     wRandom = request.POST.get('wRandom')
 
     #format value
-    #cCover = int(cCover)/100
-    #rLevel = int(rLevel)/100
     if cCover is not None:
         cCover = int(cCover) / 100
 
     if rLevel is not None:
         rLevel = int(rLevel) / 100
     
+    #validation
+    if prephase == None:
+        prephase = 0
+    if racelocked == None:
+        racelocked = 0
+    if shortformationlap == None:
+        shortformationlap = 0
+    if autodq == None:
+        autodq = 0
+    if randomizetrack == None:
+        randomizetrack = 0
+    if registerlobby == None:
+        registerlobby = 0
+    if landiscovery == None:
+        landiscovery = 0
+    if dumpleaderboard == None:
+        dumpleaderboard = 0
+    if dumpentrylist == None:
+        dumpentrylist = 0
 
     if request.method == 'POST':
+
+        #terminated accServer.exe
+        terminateServer()
 
         #setting .json file
         settings_dict = {
@@ -64,11 +99,11 @@ def home(request):
             "spectatorPassword": spectatorPassword,
             "centralEntryListPath": "",
             "carGroup": "FreeForAll",
-            "trackMedalsRequirement": TR,
-            "safetyRatingRequirement": SA,
-            "racecraftRatingRequirement": RC,
-            "maxCarSlots": mCarSlot,
-            "isRaceLocked": racelocked,
+            "trackMedalsRequirement": int(TR),
+            "safetyRatingRequirement": int(SA),
+            "racecraftRatingRequirement": int(RC),
+            "maxCarSlots": int(mCarSlot),
+            "isRaceLocked": int(racelocked),
             "isLockedPrepPhase": prephase,
             "shortFormationLap": shortformationlap,
             "dumpLeaderboards": dumpleaderboard,
@@ -76,11 +111,11 @@ def home(request):
             "randomizeTrackWhenEmpty": randomizetrack,
             "allowAutoDQ": autodq,
             "ignorePrematureDisconnects": 0,
-            "formationLapType": formationLap,
+            "formationLapType": int(formationLapType),
             "configVersion": 1
         }
 
-        # event .json file
+        ## event .json file
         event_dict={
             "ambientTemp": int(amTemp),
             "cloudLevel": float(cCover),
@@ -93,18 +128,18 @@ def home(request):
             "sessionOverTimeSeconds": int(overTime),
             "sessions": [
                 {
-                  "dayOfWeekend": 3,
-                  "hourOfDay": 16,
-                  "sessionDurationMinutes": 500,
-                  "sessionType": "Q",
-                  "timeMultiplier": 1
+                  "dayOfWeekend": int(day),
+                  "hourOfDay": int(start_time),
+                  "sessionDurationMinutes": int(duration),
+                  "sessionType": session,
+                  "timeMultiplier": int(time_scale)
                 },
                 {
-                  "dayOfWeekend": 2,
-                  "hourOfDay": 13,
-                  "sessionDurationMinutes": 60,
-                  "sessionType": "R",
-                  "timeMultiplier": 1
+                  "dayOfWeekend": int(dayR),
+                  "hourOfDay": int(start_timeR),
+                  "sessionDurationMinutes": int(durationR),
+                  "sessionType": sessionR,
+                  "timeMultiplier": int(time_scaleR)
                 }
             ],
             "simracerWeatherConditions": 1,
@@ -113,18 +148,20 @@ def home(request):
             "weatherRandomness": int(wRandom)
         }
         
-        print(event_dict)
-        print(settings_dict)
         #event dump json
-        with open('E:/Steam/steamapps/common/Assetto Corsa Competizione Dedicated Server/server/cfg/event2.json', "w") as f:
+        with open('E:/Steam/steamapps/common/Assetto Corsa Competizione Dedicated Server/server/cfg/event.json', "w") as f:
             json.dump(event_dict, f,indent="")
         #settings dump json
-        with open('E:/Steam/steamapps/common/Assetto Corsa Competizione Dedicated Server/server/cfg/settings2.json', 'w') as outfile:
+        with open('E:/Steam/steamapps/common/Assetto Corsa Competizione Dedicated Server/server/cfg/settings.json', 'w') as outfile:
             json.dump(settings_dict, outfile, indent="")
+        
+        #start server
+        os.startfile("E:/Steam/steamapps/common/Assetto Corsa Competizione Dedicated Server/server/accServer.exe")
 
     else:
         return render(request, 'registration/home.html')
     return render(request, 'registration/generated_json.html')
+    
 
 def user_login(request):
     if request.method == 'POST':
@@ -140,6 +177,7 @@ def user_login(request):
             return render(request, 'registration/login.html', {'error_message': 'Invalid login'})
     else:
         return render(request, 'registration/login.html')
+        
 
 def user_logout(request):
     logout(request)
@@ -154,3 +192,19 @@ def generated_json(request):
     serverName = request.POST.get('serverName')
     print(serverName)
     return render(request, 'registration/login.html')
+    
+def terminateServer():
+    output = subprocess.check_output(["tasklist", "/fi", "imagename eq accServer.exe"])
+
+    # decode the output to a string and split it by newline
+    lines = output.decode().split("\n")
+
+    # get the PID if accServer.exe is running
+    if len(lines) > 2:
+        pid = lines[2].split()[1]
+        subprocess.call(["taskkill", "/PID", pid, "/F"])
+    else:
+        print("accServer.exe is not running")
+
+    import time
+    time.sleep(10)

@@ -1,0 +1,156 @@
+﻿V1.4.1.4
+Fixed a bug where a scheduled event wouldn't fire off under certain circumstances
+----------------------------------------------------------------------
+V1.4.1.3
+Changed .NET target version to 4.5
+Fixed a bug in the startup sequence
+Fixed a bug where the GUI wound throw an error if customCar is null
+Fixed a bug where the custom car dropdown menu would stay empty, when it shouldn't, under certain circumstances
+----------------------------------------------------------------------
+V1.4.1.2
+Added Circuit of the Americas to track list
+Added Indianapolis to track list
+Added Watkins Glen to track list
+Moved 'Formation Lap Type' to the settings tab
+Fix a bug where the central entry list would be overwritten by the local one
+----------------------------------------------------------------------
+V1.4.0.0
+This is a big one and it's simply too much to write down
+----------------------------------------------------------------------
+V1.3.1.1
+Added 'Public IP' option
+Server is now known as private if a join password is set or if 'Register To Lobby' is disabled
+Added the 5 cars from The Challengers Pack DLC
+Added the 'TCX' car group
+----------------------------------------------------------------------
+V1.3
+Updated car groups (Cup, ST is merged to GTC)
+Removed all “_2019”, “_2020”, “_2021” track suffixes
+Added the BMW M4 GT3 entry
+----------------------------------------------------------------------
+V1.2.8.12
+Moved 'Tyre Sets' to the pitstop panel
+Switched location on the weather and driving aids panels
+Disabled pitstop and driving aid panels if server is public as those are ignored by public servers anyway
+----------------------------------------------------------------------
+V1.2.8.11
+Added 'postQualySeconds' option
+----------------------------------------------------------------------
+V1.2.8.10
+Added Donington 2020 to track list
+Added Oulton Park 2020 to track list
+Added Snetterton 2020 to track list
+----------------------------------------------------------------------
+V1.2.8.9
+Fixed a bug where values of '0' wouldn't be written to event.json
+----------------------------------------------------------------------
+V1.2.8.8
+Added 'Track Temp' option
+----------------------------------------------------------------------
+V1.2.8.7
+'Cloud Coverage' slider increments by 0.05
+'Rain Level' slider increments by 0.05
+----------------------------------------------------------------------
+V1.2.8.6
+Fixed an issue where ballast wasn't working correctly
+'Register To Lobby' now turns red if not checked
+----------------------------------------------------------------------
+V1.2.8.5
+Added 'No Premature Disconnects' option
+Added 'Minimize to Tray' option
+----------------------------------------------------------------------
+V1.2.8.4
+Added 2020 versions of Kyalami, Laguna Seca, Mount Panorama and Suzuka to the tracks list
+Added british DLC tracks (Oulton Park, Donington, Snetterton) to tracks list
+----------------------------------------------------------------------
+V1.2.8.3
+Server name is now shown in the main form title bar
+Entry and driver count is now shown the entries form title bar
+Added a warning if the Player ID format is incorrect
+----------------------------------------------------------------------
+V1.2.8.2
+Fixed an issue where some setting weren't saved properly
+----------------------------------------------------------------------
+V1.2.8.1
+Added function to move the sessions with the up/down arrow keys
+Added embed console checkbox
+----------------------------------------------------------------------
+V1.2.8.0
+Added support for more than 3 sessions
+----------------------------------------------------------------------
+V1.2.7.1
+Added 2020 tracks
+----------------------------------------------------------------------
+V1.2.7.0
+Added Short Ghost and Free Ghost to formation lap type option
+Added Imola 2020 to track list
+Added Mercedes AMG GT3 2020 and Ferrari 488 GT3 Evo 2020 to cars list
+----------------------------------------------------------------------
+V1.2.6.3
+Improved the server startup logic
+----------------------------------------------------------------------
+V1.2.6.2
+Fixen an issue where custom cars wouldn't always get saved
+----------------------------------------------------------------------
+V1.2.6.1
+Changed 'carClass' to 'carGroup'
+----------------------------------------------------------------------
+V1.2.6
+Fixed an issue where you would get an error if you loaded an entry with "Car Number" set to -1
+Added 'carClass' drop down list
+Added 'isLockedPrepPhase' check box
+Added GT4 cars to car lists
+----------------------------------------------------------------------
+V1.2.5
+Moved 'Formation Lap' to event options
+Added 'Tyre Sets' option
+Added 'simracerWeatherConditions' option *Experimental*
+Added 'isFixedConditionQualification' option *Experimental*
+Changed check boxes check state
+Added function to add/delete entries in the entry list with Insert/Delete
+----------------------------------------------------------------------
+V1.2.4.1
+Fixed an issue where you would get an unexpected error if you tried and save the entry list without scrolling up to the top
+----------------------------------------------------------------------
+V1.2.4
+Server is now being terminated on GUI exit
+Embeded dlls
+Added 'Post Race Wait Time' option
+Added a donation button by request. Donations are never expected but always appreciated
+----------------------------------------------------------------------
+V1.2.3
+Support for multiple instances
+----------------------------------------------------------------------
+V1.2.2.1
+Fixed an issue where you got an unhandled exeption when trying to type something in the entry list textbox
+----------------------------------------------------------------------
+V1.2.2
+Forced at least one none race session to be enbled
+Making sure values are within range when loading json files
+Sorted all lists
+Added "★" to BoP entries where ballast and/or restictor is modified
+Added function to move drivers up/down with arrow keys
+Added options for
+	Dump Entry List
+	Dump Leaderboards
+	AutoDQ
+	Randomize Track When Empty
+	Formation Lap Type
+	Central Entry List Path
+----------------------------------------------------------------------
+V1.2.1
+Embedded server in to the GUI
+----------------------------------------------------------------------
+V1.2
+Major rewrite of the code
+Some controls changed to better suit their purpose
+Added support for more options including 'EntryList' and 'Additional BoP' but still a few to go
+Added support for UTF7, UTF-16LE, UTF-16BE, UTF-32LE and UTF-32BE
+----------------------------------------------------------------------
+V1.1
+Fixed an issue to handle values that were out of track bar range
+Added check boxes to enable/disable each session. This also makes the application not expect one of each session in the event.json file
+Changed the 'Launch Server' button to a 'Start/Stop Server' button
+----------------------------------------------------------------------
+V1.0
+First release

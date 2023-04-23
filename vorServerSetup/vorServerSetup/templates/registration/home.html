@@ -29,7 +29,7 @@
             <label>Max Car Slots:</label>
             <input type="number" id="mCarSlot" name="mCarSlot" min="1" max="99">
             <div style="padding-top: 4%;">
-              <select name="formationLap" id="formationLap" style="width: 83%;" >
+              <select name="formationLapType" id="formationLapType" style="width: 83%;" >
                   <option value="0">&#40;1&#41;free 	&#40;replaces/manual start&#41;</option>
                   <option value="1">&#40;2&#41;Old Limiter Lap</option>
                   <option value="3">&#40;3&#41;Default Formation Lap</option>
@@ -118,84 +118,76 @@
                       <th>Duration &#40;minute&#41; </th>
                   </tr>
               </thead>
-              <tbody>
+              <tbody name="race_schedule">
                   <tr>
                       <td>
-                          <select name="session">
-                              <option value="q">Qualifying</option>
-                              <option value="r">Race</option>
+                          <select name="session" id="session">
+                              <option value="Q">Qualifying</option>
+                              <option value="R">Race</option>
                           </select>
                       </td>
                       <td>
-                          <select name="day">
+                          <select name="day" id="day">
                               <option value="1">Friday</option>
                               <option value="2">Saturday</option>
                               <option value="3">Sunday</option>
                           </select>
                       </td>
                       <td>
-                          <select name="time_scale">
-                              <option value="1">1</option>
-                              <option value="2">2</option>
-                              <option value="3">3</option>
-                              <option value="4">4</option>
-                              <option value="5">5</option>
-                              <option value="6">6</option>
-                              <option value="7">7</option>
-                              <option value="8">8</option>
-                              <option value="9">9</option>
-                              <option value="10">10</option>
-                              <option value="11">11</option>
-                              <option value="12">12</option>
-                              <option value="13">13</option>
-                              <option value="14">14</option>
-                              <option value="15">15</option>
-                              <option value="16">16</option>
-                              <option value="17">17</option>
-                              <option value="18">18</option>
-                              <option value="19">19</option>
-                              <option value="20">20</option>
-                              <option value="21">21</option>
-                              <option value="22">22</option>
-                              <option value="23">23</option>
-                              <option value="24">24</option>
-                          </select>
+                        <input name="time_scale" type="number" id="time_scale" min="0" max="23" required/>
                       </td>
                       <td>
-                        <select name="start_time">
-                          <option value="0">12 AM</option>
-                          <option value="1">1 AM</option>
-                          <option value="2">2 AM</option>
-                          <option value="3">3 AM</option>
-                          <option value="4">4 AM</option>
-                          <option value="5">5 AM</option>
-                          <option value="6">6 AM</option>
-                          <option value="7">7 AM</option>
-                          <option value="8">8 AM</option>
-                          <option value="9">9 AM</option>
-                          <option value="10">10 AM</option>
-                          <option value="11">11 AM</option>
-                          <option value="12">12 PM</option>
-                          <option value="13">1 PM</option>
-                          <option value="14">2 PM</option>
-                          <option value="15">3 PM</option>
-                          <option value="16">4 PM</option>
-                          <option value="17">5 PM</option>
-                          <option value="18">6 PM</option>
-                          <option value="19">7 PM</option>
-                          <option value="20">8 PM</option>
-                          <option value="21">9 PM</option>
-                          <option value="22">10 PM</option>
-                          <option value="23">11 PM</option>
-                        </select>
+                        <input name="start_time" type="number" id="start_time" min="0" max="23" required/>
                       </td>
-                      <td><input type="number" name="duration"></td>
+                      <td><input type="number" name="duration" id="duration"></td>
+                      
+                      </td>
                   </tr>
-                  <!-- Add more rows dynamically with JavaScript -->
+                  <tr>
+                    <td>
+                        <select name="sessionR" id="sessionR">
+                            <option value="R">Race</option>
+                        </select>
+                    </td>
+                    <td>
+                        <select name="dayR" id="dayR">
+                            <option value="1">Friday</option>
+                            <option value="2">Saturday</option>
+                            <option value="3">Sunday</option>
+                        </select>
+                    </td>
+                    <td>
+                      <input name="time_scaleR" type="number" id="time_scaleR" min="0" max="23" required/>
+                    </td>
+                    <td>
+                      <input name="start_timeR" type="number" id="start_timeR" min="0" max="23" required/>
+                    </td>
+                    <td><input type="number" name="durationR" id="durationR"></td>
+                    
+                    </td>
+                </tr>
+                <!--
+                  <tr>
+                    <td>
+                      Race
+                    </td>
+                    <td>
+                      <select name="raceDuration" id="raceDuration">
+                        <option value="15">15 minutes</option>
+                        <option value="20">20 minutes</option>
+                        <option value="30">30 minutes</option>
+                        <option value="45">45 minutes</option>
+                        <option value="60">60 minutes</option>
+                    </select>
+                  </tr>
+                   Add more rows dynamically with JavaScript -->
               </tbody>
             </table>
-            <button type="button" id="add-row" onclick="addRow()" >Add Row</button>
-            <button type="button" id="add-row" onclick="deleteRow()" >Delete Row</button>
+            <td>
+              
+          </td>
+            <button type="button" id="add-row" onclick="addRow()" style="display: none;">Add Row</button>
+            <button type="button" id="add-row" onclick="deleteRow()" style="display: none;" >Delete Row</button>
           </div>
           
       </form>

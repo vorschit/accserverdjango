@@ -1,0 +1,23 @@
+0: Server starting with version 255
+0: Starting server voracing test cloud
+0: ==ERR: preRaceWaitingTimeSeconds (45) has been set to 80s, -1926359232 seconds are too low for public Multiplayer
+0: shortFormationLap is set to false, but is a public server. Will use short formation lap!
+0: allowAutoDQ is set to false, but is a public server. Will use auto DQs!
+0: FileToStruct cfg/eventRules.json
+0: Translated realtime interval hzToMiliseconds(18)=54
+
+0: SessionManager::randomizeGreenFlagTriggers: s:0.890000 e:0.950000 r:0.891622
+0: Track suzuka was set and updated
+0: Event changed
+0: ==ERR: Ignoring special event rules for public Multiplayer
+0: ==ERR: Ignoring special assist rules for public Multiplayer
+0: SessionManager::randomizeGreenFlagTriggers: s:0.890000 e:0.950000 r:0.944302
+0: Significant change detected, updating lobby (1|1)
+0: Resetting weekend to friday night
+0: Reset time to friday night: 0 -> 0
+0: Reset time to first session: 0 -> 43200
+0: SessionManager::randomizeGreenFlagTriggers: s:0.890000 e:0.950000 r:0.937133
+0: Listening to TCP 9601 | UDP 9601
+226: Trying to connect to lobby (0 times, interval 10000 s)
+226: Session changed: Qualifying -> Qualifying 0
+226: Detected sessionPhase <waiting for drivers> -> <waiting for drivers> (Qualifying)

@@ -1,0 +1,24 @@
+{
+"ambientTemp": 31,
+"cloudLevel": 0.37,
+"configVersion": 1,
+"isFixedConditionQualification": 1,
+"postQualySeconds": 20,
+"postRaceSeconds": 4,
+"preRaceWaitingTimeSeconds": 35,
+"rain": 0.0032,
+"sessionOverTimeSeconds": 20,
+"sessions": [
+{
+"dayOfWeekend": 3,
+"hourOfDay": 0,
+"sessionDurationMinutes": 60,
+"sessionType": "r",
+"timeMultiplier": 1
+}
+],
+"simracerWeatherConditions": 1,
+"track": "misano",
+"trackTemp": 15,
+"weatherRandomness": 1
+}

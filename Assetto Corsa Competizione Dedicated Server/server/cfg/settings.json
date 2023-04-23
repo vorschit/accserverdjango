@@ -1,0 +1,22 @@
+{
+"serverName": "voracing test cloud",
+"adminPassword": "ugrg8eryt4f",
+"password": "",
+"spectatorPassword": "",
+"centralEntryListPath": "",
+"carGroup": "FreeForAll",
+"trackMedalsRequirement": 3,
+"safetyRatingRequirement": 99,
+"racecraftRatingRequirement": 99,
+"maxCarSlots": 24,
+"isRaceLocked": 1,
+"isLockedPrepPhase": "1",
+"shortFormationLap": 0,
+"dumpLeaderboards": 0,
+"dumpEntryList": 0,
+"randomizeTrackWhenEmpty": 0,
+"allowAutoDQ": 0,
+"ignorePrematureDisconnects": 0,
+"formationLapType": 5,
+"configVersion": 1
+}

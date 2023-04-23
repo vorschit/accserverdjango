@@ -1,0 +1,22 @@
+{
+"serverName": "fesfes",
+"adminPassword": "fsefew",
+"password": "",
+"spectatorPassword": "",
+"centralEntryListPath": "",
+"carGroup": "FreeForAll",
+"trackMedalsRequirement": "",
+"safetyRatingRequirement": "3",
+"racecraftRatingRequirement": "",
+"maxCarSlots": "",
+"isRaceLocked": null,
+"isLockedPrepPhase": null,
+"shortFormationLap": null,
+"dumpLeaderboards": null,
+"dumpEntryList": null,
+"randomizeTrackWhenEmpty": "1",
+"allowAutoDQ": null,
+"ignorePrematureDisconnects": 0,
+"formationLapType": "0",
+"configVersion": 1
+}
