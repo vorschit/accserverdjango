@@ -24,9 +24,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-@&h@b#-12j*s$qqk!dlme+^v9kkqo=83*1-ab!8p=a7a4^wb+6'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['161.142.66.55','0.0.0.0']
 
 
 # Application definition
@@ -128,3 +128,16 @@ STATIC_ROOT = BASE_DIR / "staticfiles"
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_REDIRECT_URL = "/"
 LOGOUT_REDIRECT_URL = "/"
+
+#SSL self signed
+SECURE_SSL_REDIRECT = False
+#SESSION_COOKIE_SECURE = True
+#CSRF_COOKIE_SECURE = True
+#SECURE_HSTS_SECONDS = 31536000  # One year
+#SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+#SECURE_HSTS_PRELOAD = True
+#SECURE_REFERRER_POLICY = "strict-origin-when-cross-origin"
+#SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+#SSL_CERTIFICATE_FILE = 'C:/Users/firex/OneDrive/Documents/accserverdjango/vorServerSetup/cert/server.crt'
+#SSL_KEY_FILE = 'C:/Users/firex/OneDrive/Documents/accserverdjango/vorServerSetup/cert/server.key'
+os.environ['HTTPS'] = "off"
