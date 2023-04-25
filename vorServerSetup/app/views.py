@@ -89,7 +89,8 @@ def home(request):
     if request.method == 'POST':
 
         #terminated accServer.exe
-        terminateServer()
+        #terminateServer()
+        terminate_process('accServer.exe')
 
         #setting .json file
         settings_dict = {
@@ -155,8 +156,12 @@ def home(request):
         with open('E:/Steam/steamapps/common/Assetto Corsa Competizione Dedicated Server/server/cfg/settings.json', 'w') as outfile:
             json.dump(settings_dict, outfile, indent="")
         
+        working_dir = 'E:/Steam/steamapps/common/Assetto Corsa Competizione Dedicated Server/server/cfg/'
         #start server
-        os.startfile("E:/Steam/steamapps/common/Assetto Corsa Competizione Dedicated Server/server/accServer.exe")
+        #os.startfile("E:/Steam/steamapps/common/Assetto Corsa Competizione Dedicated Server/server/accServer.exe")
+
+        os.chdir("E:/Steam/steamapps/common/Assetto Corsa Competizione Dedicated Server/server/")
+        os.system("accServer.exe")
 
     else:
         return render(request, 'registration/home.html')
@@ -207,4 +212,12 @@ def terminateServer():
         print("accServer.exe is not running")
 
     import time
-    time.sleep(10)
+    time.sleep(3)
+
+import psutil
+def terminate_process(process_name):
+    print('start to kill accServer.exe')
+    for proc in psutil.process_iter(['name']):
+        if proc.info['name'] == process_name:
+            pid = proc.pid
+            os.kill(pid, 9)
