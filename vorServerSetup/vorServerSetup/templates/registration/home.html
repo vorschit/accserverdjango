@@ -6,30 +6,26 @@
 
 <body>
     <!-- Server Setting -->
-    <h1 style="color: white;">Server Setting</h1>
-      <form method="post" id="form11">
+    <h1 style="color: white; border-radius: 6px;">Server Setting</h1>
+      <form method="post" id="form11" style="background-color: #1a2337;">
           {% csrf_token %}
-          <div style="margin-bottom: 15px; width: 15%;">
+          <div style="margin-bottom: 15px; width: 15%; ">
 
             <label for="serverName" >Server Name:</label>
-            <input type="text" id="serverName" name="serverName" required><br>
+            <input type="text" id="serverName" name="serverName" class="textbox" required><br>
             <label for="adminPassword" >adminPassword:</label>
-            <input type="text" id="adminPassword" name="adminPassword" required><br>
+            <input type="text" id="adminPassword" name="adminPassword" class="textbox" required><br>
             <label for="spectatorPassword">Spectator Password:</label>
-            <input type="text" id="spectatorPassword" name="spectatorPassword"><br>
+            <input type="text" id="spectatorPassword" class="textbox" name="spectatorPassword"><br>
 
-            <label >TR Requirement:</label>
-            <input type="number" id="TR" name="TR" min="1" max="3">
+            <label >TR Requirement (0-3 Star):</label>
+            <input type="number" id="TR" name="TR" min="0" max="3" class="textbox" pattern="\d*">
             <label >SA Requirement:</label>
-            <input type="number" id="SA" name="SA" min="1" max="99" required>
+            <input type="number" id="SA" name="SA" min="1" max="99" class="textbox" pattern="\d*" required>
             <label>RC Requirement:</label>
-            <input type="number" id="RC" name="RC" min="1" max="99">
-            <label>Max Connections:</label>
-            <input type="number" id="mConnection" name="mConnection" min="1" max="30">
-            <label>Max Car Slots:</label>
-            <input type="number" id="mCarSlot" name="mCarSlot" min="1" max="99">
+            <input type="number" id="RC" name="RC" min="1" max="99" class="textbox" pattern="\d*">
             <div style="padding-top: 4%;">
-              <select name="formationLapType" id="formationLapType" style="width: 83%;" >
+              <select name="formationLapType" id="formationLapType" style="width: 83%;"class="textbox" >
                   <option value="0">&#40;1&#41;free 	&#40;replaces/manual start&#41;</option>
                   <option value="1">&#40;2&#41;Old Limiter Lap</option>
                   <option value="3">&#40;3&#41;Default Formation Lap</option>
@@ -39,36 +35,10 @@
             </div>
           </div>
           
-          <div style=" width: 15%;">
-            <label for="prephase"> Prep Phase Locked</label>
-            <input type="checkbox" method="POST" id="prephase" name="prephase" value="1">
-            <label for="racelocked"> Race Locked</label>
-            <input type="checkbox" method="POST" id="racelocked" name="racelocked" value="1">
-            <label for="shortformationlap"> Short Formation Lap</label>
-            <input type="checkbox" method="POST" id="shortformationlap" name="shortformationlap" value="1">
-            <label for="autodq"> Auto DQ</label>
-            <input type="checkbox" method="POST"  id="autodq" name="autodq" value="1">
-            <label for="randomizetrack"> Randomize Track</label>
-            <input type="checkbox" method="POST"  id="randomizetrack" name="randomizetrack" value="1">
-            <label for="registerlobby"> registerlobby</label>
-            <input type="checkbox" method="POST" id="registerlobby" name="registerlobby" value="1">
-            <label for="landiscovery"> Lan Discovery</label>
-            <input type="checkbox" method="POST"   id="landiscovery" name="landiscovery" value="1">
-            <label for="dumpleaderboard"> Dump Leaderboard</label>
-            <input type="checkbox" method="POST"   id="dumpleaderboard" name="dumpleaderboard" value="1">
-            <label for="dumpentrylist"> Dump Entry List</label>
-            <input type="checkbox" method="POST"  id="dumpentrylist" name="dumpentrylist" value="1">
-          </div>
 
-          <div style="width: 15%;">    
-
-            Pre Race Wait Time    <input type="number" id="preRace" method="POST" name="preRace"  min="30" max="500" required>
-            Post Race Wait Time   <input type="number" id="postRace" method="POST" name="postRace"  min="1" max="5" required>
-            Over Time             <input type="number" id="overTime" min="1" method="POST" name="overTime"  max="330"required>
-            Post Qualy Wait Time  <input type="number" id="postQualy" method="POST" name="postQualy" min="1" max="330" required>
-
-
-            <select name="track" id="track" name="track"  method="POST" >
+          <div style="width: 70%;">    
+            <label >Track</label>
+            <select name="track" id="track" name="track"  method="POST" class="textbox" style="width: 100%;">
               <option value="barcelona">Barcelona</option>
               <option value="brands_hatch">Brands Hatch</option>
               <option value="cota">COTA</option>
@@ -96,20 +66,20 @@
 
           <div style="margin-bottom: 15px; color: white; width: auto;padding-top: 2%; padding-left: 2%;">
             Ambient Temperature<input name="amTemp" id="amTemp" method="post" type="range" value="22" min="10" max="35" oninput="this.nextElementSibling.value = this.value">
-            <output >24</output><br><br>
+            <output >22</output><br><br>
             Track Temperature<input name="trTemp" id="trTemp" method="post" type="range" value="25" min="1" max="49" oninput="this.nextElementSibling.value = this.value">
             <output>24</output><br><br>
             Cloud Coverage<input name="cCover" id="cCover" method="post" type="range" value="50" min="0" max="100" oninput="this.nextElementSibling.value = this.value">
-            <output>24</output><br><br>
-            Rain Level<input name="rLevel" id="rLevel" method="post" type="range" value="50" min="0" max="100" oninput="this.nextElementSibling.value = this.value">
-            <output>24</output><br><br>
-            Weather Randomness<input name="wRandom" id="wRandom" method="post" type="range" value="3" min="0" max="7" oninput="this.nextElementSibling.value = this.value">
-            <output>4</output><br><br>
+            <output>50</output><br><br>
+            Rain Level<input name="rLevel" id="rLevel" method="post" type="range" value="0" min="0" max="100" oninput="this.nextElementSibling.value = this.value">
+            <output>0</output><br><br>
+            Weather Randomness<input name="wRandom" id="wRandom" method="post" type="range" value="0" min="0" max="7" oninput="this.nextElementSibling.value = this.value">
+            <output>0</output><br><br>
           </div>
 
-          <div>
-            <table>
-              <thead>
+          <div style="width: 90%;">
+            <table style="width: 90%;" >
+              <thead style="width: 20%;">
                   <tr>
                       <th>Session</th>
                       <th>Day</th>
@@ -121,13 +91,13 @@
               <tbody name="race_schedule">
                   <tr>
                       <td>
-                          <select name="session" id="session">
+                          <select name="session" id="session" class="sessionDay">
                               <option value="Q">Qualifying</option>
                               <option value="R">Race</option>
                           </select>
                       </td>
                       <td>
-                          <select name="day" id="day">
+                          <select name="day" id="day" class="day">
                               <option value="1">Friday</option>
                               <option value="2">Saturday</option>
                               <option value="3">Sunday</option>
@@ -145,12 +115,12 @@
                   </tr>
                   <tr>
                     <td>
-                        <select name="sessionR" id="sessionR">
+                        <select name="sessionR" id="sessionR" class="sessionDay">
                             <option value="R">Race</option>
                         </select>
                     </td>
                     <td>
-                        <select name="dayR" id="dayR">
+                        <select name="dayR" id="dayR" class="day">
                             <option value="1">Friday</option>
                             <option value="2">Saturday</option>
                             <option value="3">Sunday</option>
@@ -191,14 +161,14 @@
           </div>
           
       </form>
-      <div style="padding-left: 25%; width: 50%;">
-        <input class="btnLogin" type="submit" value="home"  form="form11">
+      <div style="padding-left: 25%; width: 50%; padding-top: 1%;">
+        <input class="btnLogin" type="submit" value="Create Server"  form="form11">
       </div>
         
         
     <style>
       form{
-        display: flex;
+        display:block;
         justify-content: center; 
         align-items: center; 
         height: calc(100% - 120px); 
@@ -219,10 +189,27 @@
       }
       .btnLogin{
         width: 100%;
+        padding: 10px 20px; background-color: #639fab; border-radius: 2px;
       }
       output{
         display: block;
         text-align: center;
+      }
+      .textbox{
+        background-color: #0D1321;
+        border: 2px solid #3B3F49;
+        border-radius: 4px;
+        color: #FFFFFF;
+        font-size: 16px;
+        padding: 8px;
+      }
+      .day
+      {
+        width: 85%;
+      }
+      .sessionDay
+      {
+        width: 85%;
       }
     </style>
 

@@ -11,8 +11,9 @@
 
 </head>
 
-<body style="background-color: #001d3d;">
+<body style="background-color: #1c5d99;">
 	{% if user.is_authenticated %}
+			<li style="float:right"><a class="active" href="#comingsoon">Terminate Server</a></li>
 			<li style="float:right"><a class="active" href="{% url 'app:logout' %}">Logout</a></li>
 			<li style="float:right"><a href="#about"><span>{{ user }}</span></a></li>
 		{% else %}
