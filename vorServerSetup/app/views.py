@@ -31,25 +31,8 @@ def home(request):
     TR = request.POST.get('TR')
     SA = request.POST.get('SA')
     RC = request.POST.get('RC')
-    mConnection = request.POST.get('mConnection')
     formationLapType = request.POST.get('formationLapType')
-    mCarSlot = request.POST.get('mCarSlot')
-    formationLap = request.POST.get('formationLap')
-    prephase = request.POST.get('prephase')
-    racelocked = request.POST.get('racelocked')
-    shortformationlap = request.POST.get('shortformationlap')
-    autodq = request.POST.get('autodq')
-    randomizetrack = request.POST.get('randomizetrack')
-    registerlobby = request.POST.get('registerlobby')
-    landiscovery = request.POST.get('landiscovery')
-    dumpleaderboard = request.POST.get('dumpleaderboard')
-    dumpentrylist = request.POST.get('dumpentrylist')
 
-    # Miscellaneaous
-    preRace = request.POST.get('preRace')
-    postRace = request.POST.get('postRace')
-    overTime = request.POST.get('overTime')
-    postQualy = request.POST.get('postQualy')
     track = request.POST.get('track')
 
     #Weather
@@ -66,31 +49,12 @@ def home(request):
     if rLevel is not None:
         rLevel = int(rLevel) / 100
     
-    #validation
-    if prephase == None:
-        prephase = 0
-    if racelocked == None:
-        racelocked = 0
-    if shortformationlap == None:
-        shortformationlap = 0
-    if autodq == None:
-        autodq = 0
-    if randomizetrack == None:
-        randomizetrack = 0
-    if registerlobby == None:
-        registerlobby = 0
-    if landiscovery == None:
-        landiscovery = 0
-    if dumpleaderboard == None:
-        dumpleaderboard = 0
-    if dumpentrylist == None:
-        dumpentrylist = 0
 
     if request.method == 'POST':
 
         #terminated accServer.exe
         #terminateServer()
-        terminate_process('accServer.exe')
+        terminate_process2()
 
         #setting .json file
         settings_dict = {
@@ -103,14 +67,14 @@ def home(request):
             "trackMedalsRequirement": int(TR),
             "safetyRatingRequirement": int(SA),
             "racecraftRatingRequirement": int(RC),
-            "maxCarSlots": int(mCarSlot),
-            "isRaceLocked": int(racelocked),
-            "isLockedPrepPhase": prephase,
-            "shortFormationLap": shortformationlap,
-            "dumpLeaderboards": dumpleaderboard,
-            "dumpEntryList": dumpentrylist,
-            "randomizeTrackWhenEmpty": randomizetrack,
-            "allowAutoDQ": autodq,
+            "maxCarSlots": "20",
+            "isRaceLocked": "1",
+            "isLockedPrepPhase": "0",
+            "shortFormationLap": "1",
+            "dumpLeaderboards": "0",
+            "dumpEntryList": "0",
+            "randomizeTrackWhenEmpty": "0",
+            "allowAutoDQ": "0",
             "ignorePrematureDisconnects": 0,
             "formationLapType": int(formationLapType),
             "configVersion": 1
@@ -122,11 +86,11 @@ def home(request):
             "cloudLevel": float(cCover),
             "configVersion": 1,
             "isFixedConditionQualification": 1,
-            "postQualySeconds": int(postQualy),
-            "postRaceSeconds": int(postRace),
-            "preRaceWaitingTimeSeconds": int(preRace),
+            "postQualySeconds": "80",
+            "postRaceSeconds": "60",
+            "preRaceWaitingTimeSeconds": "60",
             "rain": float(rLevel) / 100,
-            "sessionOverTimeSeconds": int(overTime),
+            "sessionOverTimeSeconds": "120",
             "sessions": [
                 {
                   "dayOfWeekend": int(day),
@@ -215,7 +179,18 @@ def terminateServer():
     time.sleep(3)
 
 import psutil
-def terminate_process(process_name):
+def terminate_process(request):
+    if request.method == 'POST':
+        process_name='accServer.exe'
+        print('start to kill accServer.exe')
+        for proc in psutil.process_iter(['name']):
+            if proc.info['name'] == process_name:
+                pid = proc.pid
+                os.kill(pid, 9)
+    return render(request, 'registration/home.html')
+
+def terminate_process2():
+    process_name='accServer.exe'
     print('start to kill accServer.exe')
     for proc in psutil.process_iter(['name']):
         if proc.info['name'] == process_name:
